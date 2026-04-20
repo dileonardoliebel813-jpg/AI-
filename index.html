@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 客服赛道竞品分析 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    main {
+      padding-top: 56px;
+    }
+
+    section {
+      padding: 24px;
+    }
+
+    .mount-point,
+    .chart-container {
+      min-height: 160px;
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="页面导航">
+    <ul>
+      <li><a href="#cover">Cover</a></li>
+      <li><a href="#market-overview">Market Overview</a></li>
+      <li><a href="#product-cards">Product Cards</a></li>
+      <li><a href="#comparison-matrix">Comparison Matrix</a></li>
+      <li><a href="#charts">Charts</a></li>
+      <li><a href="#key-insights">Key Insights</a></li>
+      <li><a href="#recommendations">Recommendations</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="cover">
+      <header>
+        <p>AI Customer Service Competitive Analysis</p>
+        <h1>AI 客服赛道竞品分析 2025</h1>
+        <p>7 大产品深度对比 · 定价 · 能力 · 市场定位</p>
+        <p>2025 年 4 月</p>
+      </header>
+    </section>
+
+    <section id="market-overview">
+      <header>
+        <p>Section 2</p>
+        <h2>Market Overview</h2>
+      </header>
+      <div>
+        <div>
+          <article>
+            <h3>2024 市场规模</h3>
+            <p>$12.06B</p>
+          </article>
+          <article>
+            <h3>2030 预测</h3>
+            <p>$47.82B</p>
+          </article>
+          <article>
+            <h3>CAGR</h3>
+            <p>25.8%</p>
+          </article>
+        </div>
+        <div>
+          <article>
+            <h3>Agentic AI</h3>
+            <p>从问答机器人到自主完成任务</p>
+          </article>
+          <article>
+            <h3>按结果计费</h3>
+            <p>Per-resolution 取代 Per-seat 成主流</p>
+          </article>
+          <article>
+            <h3>多渠道统一</h3>
+            <p>Chat / Email / Voice / Social 统一处理</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="product-cards">
+      <header>
+        <p>Section 3</p>
+        <h2>Product Cards</h2>
+      </header>
+      <div id="product-cards-mount" class="mount-point" aria-label="Product cards mount point"></div>
+    </section>
+
+    <section id="comparison-matrix">
+      <header>
+        <p>Section 4</p>
+        <h2>Comparison Matrix</h2>
+      </header>
+      <div id="comparison-matrix-mount" class="mount-point" aria-label="Comparison matrix mount point"></div>
+    </section>
+
+    <section id="charts">
+      <header>
+        <p>Section 5</p>
+        <h2>Charts</h2>
+      </header>
+      <div>
+        <article>
+          <h3>多维能力对比</h3>
+          <div id="chart-radar" class="chart-container" aria-label="Radar chart container"></div>
+        </article>
+        <article>
+          <h3>定价 vs 自动化 vs 规模</h3>
+          <div id="chart-bubble" class="chart-container" aria-label="Bubble chart container"></div>
+        </article>
+        <article>
+          <h3>每次解决成本对比</h3>
+          <div id="chart-cost" class="chart-container" aria-label="Cost chart container"></div>
+        </article>
+        <article>
+          <h3>功能覆盖矩阵</h3>
+          <div id="chart-heatmap" class="chart-container" aria-label="Heatmap chart container"></div>
+        </article>
+        <article>
+          <h3>企业规模 vs 定价门槛</h3>
+          <div id="chart-positioning" class="chart-container" aria-label="Positioning chart container"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="key-insights">
+      <header>
+        <p>Section 6</p>
+        <h2>Key Insights</h2>
+      </header>
+      <div id="key-insights-mount" class="mount-point" aria-label="Key insights mount point"></div>
+    </section>
+
+    <section id="recommendations">
+      <header>
+        <p>Section 7</p>
+        <h2>Recommendations</h2>
+      </header>
+      <div id="recommendations-mount" class="mount-point" aria-label="Recommendations mount point"></div>
+    </section>
+
+    <section id="sources">
+      <header>
+        <p>Section 8</p>
+        <h2>Sources</h2>
+      </header>
+      <ol>
+        <li><a href="https://www.intercom.com/help/en/articles/7120684-fin-ai-agent-explained">Intercom Fin 官方文档</a></li>
+        <li><a href="https://www.intercom.com/blog/whats-new-with-fin-3/">Intercom Fin 3 发布博客</a></li>
+        <li><a href="https://www.zendesk.com/service/ai/copilot/">Zendesk Copilot 官网</a></li>
+        <li><a href="https://www.thehindubusinessline.com/info-tech/zendesk-launches-outcome-based-pricing-for-ai-agents/article68634373.ece">Zendesk outcome-based 定价公告</a></li>
+        <li><a href="https://techcrunch.com/2026/03/11/zendesk-acquires-agentic-customer-service-startup-forethought/">Zendesk 收购 Forethought</a></li>
+        <li><a href="https://forethought.ai/pricing">Forethought 官方定价</a></li>
+        <li><a href="https://www.salesforce.com/news/stories/pricing-update/">Salesforce 定价更新官方公告</a></li>
+        <li><a href="https://redresscompliance.com/salesforce-agentforce-pricing-evolution-2026.html">Salesforce Agentforce 定价演变</a></li>
+        <li><a href="https://www.freshworks.com/freshdesk/pricing/">Freshworks 官方定价</a></li>
+        <li><a href="https://www.kustomer.com/ai-pricing/">Kustomer 官方 AI 定价</a></li>
+        <li><a href="https://fin.ai/learn/ai-customer-service-agent-pricing-comparison">AI CS 定价横向对比</a></li>
+        <li><a href="https://paymentib.marketsandmarkets.com/Market-Reports/ai-for-customer-service-market-244430169.html">市场规模数据</a></li>
+        <li><a href="https://www.globenewswire.com/news-release/2025/03/07/3038782/0/en/AI-in-Customer-Service-Market-Report-2025-2030">GlobeNewsWire 市场报告</a></li>
+      </ol>
+      <p>调研日期：2025 年 4 月 20 日</p>
+    </section>
+  </main>
+</body>
+</html>
