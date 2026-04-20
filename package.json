@@ -1,0 +1,26 @@
+{
+  "name": "AI Customer Service Competitive Analysis 2026",
+  "version": "1.0.0",
+  "description": "A comprehensive competitive analysis report of 7 leading AI customer service platforms, with pricing, capabilities, and market positioning comparison.",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dileonardoliebel813-jpg/AI-"
+  },
+  "keywords": [
+    "AI",
+    "customer service",
+    "competitive analysis",
+    "pricing comparison",
+    "Intercom Fin",
+    "Zendesk",
+    "Ada CX",
+    "Forethought",
+    "Freshdesk",
+    "Salesforce",
+    "Kustomer"
+  ],
+  "author": "dileonardoliebel813-jpg",
+  "license": "MIT",
+  "homepage": "https://dileonardoliebel813-jpg.github.io/AI-"
+}
