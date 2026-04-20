@@ -6,36 +6,604 @@
   <title>AI 客服赛道竞品分析 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <style>
+    :root {
+      --bg: #0b0f16;
+      --panel: rgba(20, 27, 38, 0.82);
+      --border: rgba(148, 163, 184, 0.14);
+      --border-strong: rgba(148, 163, 184, 0.22);
+      --text: #e8edf6;
+      --muted: #9aa8bc;
+      --faint: #677489;
+      --blue: #4f8ef7;
+      --green: #34d399;
+      --amber: #f59e0b;
+      --red: #f87171;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --nav-height: 72px;
+      --content-width: 1420px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
+      background:
+        radial-gradient(circle at top left, rgba(79, 142, 247, 0.18), transparent 26%),
+        radial-gradient(circle at top right, rgba(52, 211, 153, 0.08), transparent 24%),
+        linear-gradient(180deg, #0b0f16 0%, #101725 100%);
     }
 
     body {
       margin: 0;
+      min-width: 1280px;
+      color: var(--text);
       font-family: "Inter", sans-serif;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        radial-gradient(circle at 15% 18%, rgba(79, 142, 247, 0.14), transparent 24%),
+        radial-gradient(circle at 85% 12%, rgba(52, 211, 153, 0.08), transparent 20%),
+        linear-gradient(180deg, #0b0f16 0%, #101725 100%);
+      background-size: 36px 36px, 36px 36px, auto, auto, auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    ol,
+    ul {
+      margin-top: 0;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin-bottom: 0;
+      letter-spacing: -0.03em;
+      color: var(--text);
     }
 
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 18px;
+      left: 50%;
+      z-index: 100;
+      width: min(calc(100% - 40px), 1320px);
+      transform: translateX(-50%);
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(11, 15, 22, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav li {
+      flex: 1;
+    }
+
+    nav a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-align: center;
+      text-transform: uppercase;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-1px);
     }
 
     main {
-      padding-top: 56px;
+      padding-top: calc(var(--nav-height) + 28px);
     }
 
     section {
-      padding: 24px;
+      position: relative;
+      min-height: 100vh;
+      padding: 72px 44px;
     }
 
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.045);
+      border-radius: var(--radius-xl);
+      pointer-events: none;
+    }
+
+    section > * {
+      width: min(100%, var(--content-width));
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    section > header {
+      margin-bottom: 28px;
+    }
+
+    section > header > p:first-child {
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    section > header h2 {
+      font-size: 42px;
+      line-height: 1.05;
+    }
+
+    #cover {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(79, 142, 247, 0.18), transparent 24%),
+        radial-gradient(circle at 78% 30%, rgba(52, 211, 153, 0.08), transparent 18%);
+      pointer-events: none;
+    }
+
+    #cover header {
+      max-width: 880px;
+      padding: 56px 0 40px;
+    }
+
+    #cover header > p:first-child {
+      margin-bottom: 18px;
+      color: #c7d3e5;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    #cover h1 {
+      max-width: 18ch;
+      font-size: clamp(52px, 6vw, 96px);
+      line-height: 0.96;
+      margin-bottom: 18px;
+    }
+
+    #cover p:nth-of-type(2) {
+      max-width: 720px;
+      margin-bottom: 18px;
+      font-size: 20px;
+      color: #b6c3d7;
+    }
+
+    #cover p:last-child {
+      color: var(--faint);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #market-overview > div {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 24px;
+    }
+
+    #market-overview > div > div {
+      display: grid;
+      gap: 18px;
+    }
+
+    #market-overview article,
+    #charts article,
     .mount-point,
+    #sources ol,
+    #sources > p {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 42%),
+        var(--panel);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    #market-overview article:hover,
+    #charts article:hover,
+    .mount-point:hover,
+    #sources ol:hover,
+    #sources > p:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+    }
+
+    #market-overview article h3 {
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--faint);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #market-overview article p {
+      margin-bottom: 0;
+    }
+
+    #market-overview > div > div:first-child article p {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.05;
+    }
+
+    #product-cards .mount-point,
+    #comparison-matrix .mount-point,
+    #key-insights .mount-point,
+    #recommendations .mount-point {
+      min-height: unset;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
+      padding: 0;
+      transform: none !important;
+    }
+
+    .product-grid,
+    .insight-grid,
+    .recommendation-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(7, minmax(280px, 1fr));
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .product-grid::-webkit-scrollbar,
+    .matrix-scroll::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .product-grid::-webkit-scrollbar-thumb,
+    .matrix-scroll::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.24);
+      border-radius: 999px;
+    }
+
+    .product-card,
+    .insight-card,
+    .recommendation-card {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: rgba(11, 15, 22, 0.36);
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+
+    .product-card:hover,
+    .insight-card:hover,
+    .recommendation-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+    }
+
+    .product-card__top,
+    .recommendation-card__top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .product-card__eyebrow,
+    .recommendation-card__eyebrow,
+    .matrix-eyebrow {
+      margin-bottom: 8px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      font-weight: 700;
+    }
+
+    .product-card__badge,
+    .recommendation-card__pick {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(79, 142, 247, 0.12);
+      color: #d8e5ff;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .recommendation-card__pick {
+      background: rgba(52, 211, 153, 0.12);
+      color: #bff2de;
+    }
+
+    .product-card__swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.04);
+    }
+
+    .product-card__meta {
+      margin: 18px 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .product-card__meta-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .product-card__meta-label {
+      color: var(--faint);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .product-card__meta-value {
+      color: var(--text);
+      text-align: right;
+      font-weight: 500;
+    }
+
+    .product-card h4 {
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .product-card h3 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .product-card ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .product-card ul li + li {
+      margin-top: 6px;
+    }
+
+    .matrix-scroll {
+      overflow-x: auto;
+    }
+
+    .matrix-table {
+      width: 100%;
+      min-width: 1180px;
+      border-collapse: collapse;
+    }
+
+    .matrix-table th,
+    .matrix-table td {
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .matrix-table th {
+      color: var(--text);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(79, 142, 247, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .matrix-table td {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .matrix-table strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .score-dots {
+      display: inline-flex;
+      gap: 5px;
+    }
+
+    .score-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .score-dot.is-high {
+      background: var(--green);
+    }
+
+    .score-dot.is-mid {
+      background: var(--amber);
+    }
+
+    .score-dot.is-low {
+      background: var(--red);
+    }
+
+    .insight-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .recommendation-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .insight-card__icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      background: rgba(79, 142, 247, 0.12);
+      font-size: 22px;
+    }
+
+    #charts > div {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    #charts > div article:nth-child(1),
+    #charts > div article:nth-child(2) {
+      grid-column: span 3;
+    }
+
+    #charts > div article:nth-child(3),
+    #charts > div article:nth-child(4),
+    #charts > div article:nth-child(5) {
+      grid-column: span 2;
+    }
+
+    #charts article {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 340px;
+    }
+
+    #charts article h3 {
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
     .chart-container {
-      min-height: 160px;
+      flex: 1;
+      min-height: 260px;
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 34%),
+        rgba(11, 15, 22, 0.42);
+      outline: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    #sources ol {
+      padding-left: 44px;
+      padding-top: 22px;
+      padding-bottom: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 42%), var(--panel);
+      backdrop-filter: blur(12px);
+    }
+
+    #sources li + li {
+      margin-top: 10px;
+    }
+
+    #sources a {
+      color: var(--muted);
+    }
+
+    #sources a:hover {
+      color: var(--text);
+    }
+
+    #sources > p {
+      margin-top: 14px;
+      color: var(--faint);
+    }
+
+    .insight-card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .insight-card p {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .recommendation-card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .recommendation-card p {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 0;
     }
   </style>
 </head>
@@ -43,11 +611,11 @@
   <nav aria-label="页面导航">
     <ul>
       <li><a href="#cover">Cover</a></li>
-      <li><a href="#market-overview">Market Overview</a></li>
-      <li><a href="#product-cards">Product Cards</a></li>
-      <li><a href="#comparison-matrix">Comparison Matrix</a></li>
+      <li><a href="#market-overview">Overview</a></li>
+      <li><a href="#product-cards">Products</a></li>
+      <li><a href="#comparison-matrix">Matrix</a></li>
       <li><a href="#charts">Charts</a></li>
-      <li><a href="#key-insights">Key Insights</a></li>
+      <li><a href="#key-insights">Insights</a></li>
       <li><a href="#recommendations">Recommendations</a></li>
       <li><a href="#sources">Sources</a></li>
     </ul>
@@ -59,13 +627,13 @@
         <p>AI Customer Service Competitive Analysis</p>
         <h1>AI 客服赛道竞品分析 2025</h1>
         <p>7 大产品深度对比 · 定价 · 能力 · 市场定位</p>
-        <p>2025 年 4 月</p>
+        <p>2026 年 4 月</p>
       </header>
     </section>
 
     <section id="market-overview">
       <header>
-        <p>Section 2</p>
+        <p>赛道概览</p>
         <h2>Market Overview</h2>
       </header>
       <div>
@@ -86,15 +654,15 @@
         <div>
           <article>
             <h3>Agentic AI</h3>
-            <p>从问答机器人到自主完成任务</p>
+            <p>从问答机器人到自主完成任务，AI 客服正在从辅助工具升级为执行层。</p>
           </article>
           <article>
             <h3>按结果计费</h3>
-            <p>Per-resolution 取代 Per-seat 成主流</p>
+            <p>Per-resolution 正逐步替代 Per-seat，采购逻辑转向结果与 ROI。</p>
           </article>
           <article>
             <h3>多渠道统一</h3>
-            <p>Chat / Email / Voice / Social 统一处理</p>
+            <p>Chat / Email / Voice / Social 的统一运营能力成为平台分水岭。</p>
           </article>
         </div>
       </div>
@@ -102,7 +670,7 @@
 
     <section id="product-cards">
       <header>
-        <p>Section 3</p>
+        <p>核心竞品</p>
         <h2>Product Cards</h2>
       </header>
       <div id="product-cards-mount" class="mount-point" aria-label="Product cards mount point"></div>
@@ -110,7 +678,7 @@
 
     <section id="comparison-matrix">
       <header>
-        <p>Section 4</p>
+        <p>竞品矩阵</p>
         <h2>Comparison Matrix</h2>
       </header>
       <div id="comparison-matrix-mount" class="mount-point" aria-label="Comparison matrix mount point"></div>
@@ -118,7 +686,7 @@
 
     <section id="charts">
       <header>
-        <p>Section 5</p>
+        <p>图表分析</p>
         <h2>Charts</h2>
       </header>
       <div>
@@ -147,7 +715,7 @@
 
     <section id="key-insights">
       <header>
-        <p>Section 6</p>
+        <p>关键洞察</p>
         <h2>Key Insights</h2>
       </header>
       <div id="key-insights-mount" class="mount-point" aria-label="Key insights mount point"></div>
@@ -155,7 +723,7 @@
 
     <section id="recommendations">
       <header>
-        <p>Section 7</p>
+        <p>选型建议</p>
         <h2>Recommendations</h2>
       </header>
       <div id="recommendations-mount" class="mount-point" aria-label="Recommendations mount point"></div>
@@ -163,7 +731,7 @@
 
     <section id="sources">
       <header>
-        <p>Section 8</p>
+        <p>数据来源</p>
         <h2>Sources</h2>
       </header>
       <ol>
@@ -181,8 +749,556 @@
         <li><a href="https://paymentib.marketsandmarkets.com/Market-Reports/ai-for-customer-service-market-244430169.html">市场规模数据</a></li>
         <li><a href="https://www.globenewswire.com/news-release/2025/03/07/3038782/0/en/AI-in-Customer-Service-Market-Report-2025-2030">GlobeNewsWire 市场报告</a></li>
       </ol>
-      <p>调研日期：2025 年 4 月 20 日</p>
+      <p>调研日期：2026 年 4 月 20 日</p>
     </section>
   </main>
+
+  <script>
+    const products = [
+      {
+        name: "Intercom Fin",
+        version: "Fin 3",
+        tagline: "世界最高性能企业级 AI Agent",
+        target: "Mid / Enterprise",
+        pricing_model: "按解决量",
+        pricing_unit: "$0.99 / resolution",
+        platform_fee: "$39/seat/mo 起",
+        highlights: ["10+ 渠道覆盖", "无功能分级", "Fin Vision 图像识别"],
+        channels: ["Chat", "Email", "Voice", "SMS", "WhatsApp", "Instagram"],
+        brand_color: "#6366F1"
+      },
+      {
+        name: "Zendesk AI",
+        version: "AI Agents + Copilot",
+        tagline: "AI-first 服务平台，自主解决 + 人工辅助",
+        target: "Mid / Enterprise",
+        pricing_model: "按解决量",
+        pricing_unit: "$1.50-$2.00 / resolution",
+        platform_fee: "$55-$169/agent/mo + $50 AI 附加",
+        highlights: ["收购 Forethought 引入自我改进 AI", "Copilot 提升 82% 效率", "最大集成生态"],
+        channels: ["Chat", "Email", "Voice", "Social", "Messaging"],
+        brand_color: "#03363D"
+      },
+      {
+        name: "Ada CX",
+        version: "",
+        tagline: "AI-first 企业客服自动化，声称 80%+ 解决率",
+        target: "Enterprise",
+        pricing_model: "自定义合同",
+        pricing_unit: "$1.00-$3.50 / interaction",
+        platform_fee: "起步 ~$30K/年",
+        highlights: ["多语言能力强", "无代码流程构建", "深度 CRM 集成"],
+        channels: ["Chat", "Email", "Voice", "SMS", "WhatsApp"],
+        brand_color: "#FF5C35"
+      },
+      {
+        name: "Forethought",
+        version: "已被 Zendesk 收购",
+        tagline: "五 Agent 架构，覆盖全客服生命周期",
+        target: "Enterprise（20K+ 工单/月）",
+        pricing_model: "Outcome-based 自定义",
+        pricing_unit: "自定义",
+        platform_fee: "起步 ~$499/mo",
+        highlights: ["Resolve/Triage/Copilot/Discover/QA 五 Agent", "自我改进 AI", "QA 自动化"],
+        channels: ["Chat", "Email", "Voice", "SMS", "Web"],
+        brand_color: "#7C3AED"
+      },
+      {
+        name: "Freshdesk Freddy AI",
+        version: "",
+        tagline: "Freshworks 全套 AI 引擎，性价比最优",
+        target: "SMB / Mid",
+        pricing_model: "混合（seat + session）",
+        pricing_unit: "$0.10 / 1K sessions",
+        platform_fee: "$15/agent/mo 起；Copilot $29/agent/mo 附加",
+        highlights: ["价格最低", "跨产品统一 AI 引擎", "适合预算有限团队"],
+        channels: ["Chat", "Email", "Phone", "Social"],
+        brand_color: "#00B140"
+      },
+      {
+        name: "Salesforce Agentforce",
+        version: "原 Einstein for Service",
+        tagline: "企业级 AI Agent 平台，深度绑定 Salesforce 生态",
+        target: "Enterprise",
+        pricing_model: "Flex Credits（$0.10/action）或 $2/conversation",
+        pricing_unit: "$0.10 / action",
+        platform_fee: "Service Cloud $175+/user/mo；Agentforce 附加 $125/user/mo",
+        highlights: ["CRM 数据集成最深", "跨 Sales+Service 统一", "Data Cloud 超个性化"],
+        channels: ["Chat", "Email", "Voice", "Messaging"],
+        brand_color: "#00A1E0"
+      },
+      {
+        name: "Kustomer",
+        version: "Meta 旗下",
+        tagline: "CRM 驱动 AI 客服，完整客户上下文",
+        target: "Mid / Enterprise（DTC 电商）",
+        pricing_model: "按 seat",
+        pricing_unit: "$89-$139 / seat / mo",
+        platform_fee: "最低 8 seats，仅年付",
+        highlights: ["客户历史数据最完整", "全渠道统一时间线", "适合高 LTV 场景"],
+        channels: ["Chat", "Email", "Voice", "SMS", "WhatsApp", "Social"],
+        brand_color: "#FF6B35"
+      }
+    ];
+
+    const scores = [
+      { name: "Intercom Fin", automation: 5, multichannel: 5, copilot: 4, integration: 4, pricing_transparency: 5, deploy_ease: 4, scale: "Mid/Enterprise" },
+      { name: "Zendesk AI", automation: 4, multichannel: 5, copilot: 5, integration: 5, pricing_transparency: 3, deploy_ease: 3, scale: "Mid/Enterprise" },
+      { name: "Ada CX", automation: 4, multichannel: 4, copilot: 3, integration: 4, pricing_transparency: 2, deploy_ease: 3, scale: "Enterprise" },
+      { name: "Forethought", automation: 5, multichannel: 4, copilot: 5, integration: 4, pricing_transparency: 2, deploy_ease: 2, scale: "Enterprise" },
+      { name: "Freshdesk Freddy", automation: 3, multichannel: 4, copilot: 3, integration: 3, pricing_transparency: 4, deploy_ease: 4, scale: "SMB/Mid" },
+      { name: "Salesforce Agentforce", automation: 4, multichannel: 4, copilot: 4, integration: 5, pricing_transparency: 1, deploy_ease: 1, scale: "Enterprise" },
+      { name: "Kustomer", automation: 3, multichannel: 5, copilot: 3, integration: 4, pricing_transparency: 3, deploy_ease: 3, scale: "Mid/Enterprise" }
+    ];
+
+    const differentiators = {
+      "Intercom Fin": "高自动化能力与高透明定价兼得",
+      "Zendesk AI": "Copilot 成熟，集成生态最完整",
+      "Ada CX": "企业自动化与多语言支持均衡",
+      "Forethought": "五 Agent 架构覆盖全生命周期",
+      "Freshdesk Freddy": "SMB 性价比最强，上手成本低",
+      "Salesforce Agentforce": "Salesforce 生态内集成深度无可替代",
+      "Kustomer": "客户上下文最完整，适合高 LTV 业务"
+    };
+
+    const insights = [
+      {
+        icon: "💰",
+        title: "按结果计费成为主流",
+        body: "Intercom Fin（$0.99）和 Zendesk（$1.50-$2.00）都在推动 per-resolution 模式，买家只为真正解决的问题付费。"
+      },
+      {
+        icon: "🔀",
+        title: "Zendesk 收购 Forethought，整合自我改进 AI",
+        body: "Forethought 的五 Agent 架构与自我优化能力并入 Zendesk，强化其在企业级客服市场的进攻性。"
+      },
+      {
+        icon: "🏗️",
+        title: "Salesforce 定价最复杂，生态锁定最深",
+        body: "对 Salesforce 深度客户仍然有吸引力，但实施与采购门槛更高，不适合一般团队。"
+      },
+      {
+        icon: "💡",
+        title: "Freshdesk 是 SMB 性价比最优解",
+        body: "价格最友好、上手快，适合预算有限但希望快速部署 AI 客服能力的中小团队。"
+      },
+      {
+        icon: "🤖",
+        title: "Agentic AI 成为 2025 核心战场",
+        body: "比起简单问答，平台真正拉开差距的是复杂任务处理、跨渠道统一和自主执行能力。"
+      }
+    ];
+
+    const recommendations = [
+      {
+        scenario: "SMB（<50 人客服团队）",
+        pick: "Freshdesk Freddy AI",
+        reason: "价格最低，上手快，AI 能力够用，不需要复杂实施。"
+      },
+      {
+        scenario: "Mid-market（50-200 人，重视 AI 自动化）",
+        pick: "Intercom Fin",
+        reason: "定价透明，功能无分级，多渠道覆盖最全，Fin 3 支持复杂推理。"
+      },
+      {
+        scenario: "Enterprise（已用 Zendesk Suite）",
+        pick: "Zendesk AI Agents + Copilot",
+        reason: "无迁移成本，Copilot 成熟，收购 Forethought 后 AI 能力持续增强。"
+      },
+      {
+        scenario: "Enterprise（已用 Salesforce 生态）",
+        pick: "Salesforce Agentforce",
+        reason: "CRM 数据集成无可替代，跨 Sales+Service 统一，但需接受更高实施成本。"
+      }
+    ];
+
+    const costData = [
+      { name: "Intercom Fin", cost: 0.99 },
+      { name: "Zendesk AI", cost: 1.75 },
+      { name: "Ada CX", cost: 2.25 },
+      { name: "Salesforce", cost: 2.0 },
+      { name: "Freshdesk", cost: 0.1 },
+      { name: "Gorgias", cost: 0.93 }
+    ];
+
+    const features = ["Knowledge Base", "Tickets", "Agent Copilot", "Actions", "Multi-channel", "Voice", "Self-improving AI", "QA Automation"];
+
+    const featureMatrix = [
+      { name: "Intercom Fin", values: [2, 2, 2, 2, 2, 2, 1, 0] },
+      { name: "Zendesk AI", values: [2, 2, 2, 2, 2, 2, 2, 1] },
+      { name: "Ada CX", values: [2, 2, 1, 2, 2, 2, 0, 0] },
+      { name: "Forethought", values: [2, 2, 2, 2, 2, 1, 2, 2] },
+      { name: "Freshdesk Freddy", values: [2, 2, 2, 1, 2, 1, 0, 0] },
+      { name: "Salesforce Agentforce", values: [2, 2, 2, 2, 2, 2, 1, 0] },
+      { name: "Kustomer", values: [2, 2, 2, 2, 2, 2, 0, 0] }
+    ];
+
+    const positioning = [
+      { name: "Intercom Fin", x: 2.5, y: 2.5 },
+      { name: "Zendesk AI", x: 2.5, y: 3.5 },
+      { name: "Ada CX", x: 3, y: 4 },
+      { name: "Forethought", x: 3, y: 4.5 },
+      { name: "Freshdesk Freddy", x: 1.5, y: 1.5 },
+      { name: "Salesforce Agentforce", x: 3, y: 5 },
+      { name: "Kustomer", x: 2.5, y: 3 }
+    ];
+
+    function renderScoreDots(value) {
+      return Array.from({ length: 5 }, (_, index) => {
+        let cls = "";
+        if (index < value) {
+          cls = value >= 4 ? "is-high" : value === 3 ? "is-mid" : "is-low";
+        }
+        return `<span class="score-dot ${cls}"></span>`;
+      }).join("");
+    }
+
+    function renderProductCards() {
+      const mount = document.getElementById("product-cards-mount");
+      if (!mount) return;
+
+      mount.innerHTML = `
+        <div class="product-grid">
+          ${products.map((product) => `
+            <article class="product-card">
+              <div class="product-card__top">
+                <div>
+                  <p class="product-card__eyebrow">${product.target}</p>
+                  <h3>${product.name}</h3>
+                  ${product.version ? `<p class="product-card__badge">${product.version}</p>` : ""}
+                </div>
+                <span class="product-card__swatch" style="background:${product.brand_color}"></span>
+              </div>
+              <p>${product.tagline}</p>
+              <div class="product-card__meta">
+                <div class="product-card__meta-row">
+                  <span class="product-card__meta-label">定价模型</span>
+                  <span class="product-card__meta-value">${product.pricing_model}</span>
+                </div>
+                <div class="product-card__meta-row">
+                  <span class="product-card__meta-label">计费单位</span>
+                  <span class="product-card__meta-value">${product.pricing_unit}</span>
+                </div>
+                <div class="product-card__meta-row">
+                  <span class="product-card__meta-label">平台费用</span>
+                  <span class="product-card__meta-value">${product.platform_fee}</span>
+                </div>
+              </div>
+              <h4>Highlights</h4>
+              <ul>${product.highlights.map((item) => `<li>${item}</li>`).join("")}</ul>
+              <h4>Channels</h4>
+              <ul>${product.channels.map((item) => `<li>${item}</li>`).join("")}</ul>
+            </article>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderComparisonMatrix() {
+      const mount = document.getElementById("comparison-matrix-mount");
+      if (!mount) return;
+
+      mount.innerHTML = `
+        <div class="matrix-scroll">
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th>产品</th>
+                <th>自动化</th>
+                <th>多渠道</th>
+                <th>Copilot</th>
+                <th>集成</th>
+                <th>定价透明</th>
+                <th>部署简易</th>
+                <th>适合规模</th>
+                <th>差异化优势</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${scores.map((item) => `
+                <tr>
+                  <td>
+                    <p class="matrix-eyebrow">Competitive Profile</p>
+                    <strong>${item.name}</strong>
+                  </td>
+                  <td><span class="score-dots">${renderScoreDots(item.automation)}</span></td>
+                  <td><span class="score-dots">${renderScoreDots(item.multichannel)}</span></td>
+                  <td><span class="score-dots">${renderScoreDots(item.copilot)}</span></td>
+                  <td><span class="score-dots">${renderScoreDots(item.integration)}</span></td>
+                  <td><span class="score-dots">${renderScoreDots(item.pricing_transparency)}</span></td>
+                  <td><span class="score-dots">${renderScoreDots(item.deploy_ease)}</span></td>
+                  <td>${item.scale}</td>
+                  <td>${differentiators[item.name]}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function renderInsights() {
+      const mount = document.getElementById("key-insights-mount");
+      if (!mount) return;
+
+      mount.innerHTML = `
+        <div class="insight-grid">
+          ${insights.map((item) => `
+            <article class="insight-card">
+              <div class="insight-card__icon">${item.icon}</div>
+              <h3>${item.title}</h3>
+              <p>${item.body}</p>
+            </article>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderRecommendations() {
+      const mount = document.getElementById("recommendations-mount");
+      if (!mount) return;
+
+      mount.innerHTML = `
+        <div class="recommendation-grid">
+          ${recommendations.map((item) => `
+            <article class="recommendation-card">
+              <div class="recommendation-card__top">
+                <div>
+                  <p class="recommendation-card__eyebrow">${item.scenario}</p>
+                  <h3>推荐方案</h3>
+                </div>
+              </div>
+              <span class="recommendation-card__pick">${item.pick}</span>
+              <p>${item.reason}</p>
+            </article>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function initCostChart() {
+      if (typeof echarts === "undefined") return;
+      const container = document.getElementById("chart-cost");
+      if (!container) return;
+      const chart = echarts.init(container);
+      chart.setOption({
+        animation: false,
+        backgroundColor: "transparent",
+        textStyle: { color: "#9aa8bc", fontFamily: "Inter, sans-serif" },
+        grid: { top: 24, right: 16, bottom: 56, left: 52 },
+        xAxis: {
+          type: "category",
+          data: costData.map((item) => item.name),
+          axisLine: { lineStyle: { color: "#2A2D3A" } },
+          axisLabel: { color: "#677489", fontSize: 11, rotate: 15 },
+          axisTick: { show: false }
+        },
+        yAxis: {
+          type: "value",
+          axisLine: { show: false },
+          splitLine: { lineStyle: { color: "#1e2330" } },
+          axisLabel: { color: "#677489", formatter: "${value}" }
+        },
+        series: [{
+          type: "bar",
+          data: costData.map((item, i) => ({
+            value: item.cost,
+            itemStyle: {
+              color: item.name === "Freshdesk" ? "#f59e0b" : "#4f8ef7",
+              borderRadius: [4, 4, 0, 0]
+            }
+          })),
+          label: { show: true, position: "top", color: "#9aa8bc", fontSize: 11, formatter: "${c}" }
+        }]
+      });
+      window.addEventListener("resize", () => chart.resize());
+    }
+
+    function initRadarChart() {
+      if (typeof echarts === "undefined") return;
+      const container = document.getElementById("chart-radar");
+      if (!container) return;
+      const chart = echarts.init(container);
+      const palette = ["#4f8ef7","#34d399","#f59e0b","#a78bfa","#f87171","#38bdf8","#fb923c"];
+      chart.setOption({
+        animation: false,
+        backgroundColor: "transparent",
+        textStyle: { color: "#9aa8bc", fontFamily: "Inter, sans-serif" },
+        legend: {
+          top: 4, left: "center",
+          textStyle: { color: "#677489", fontSize: 11 },
+          itemWidth: 10, itemHeight: 10
+        },
+        radar: {
+          radius: "54%",
+          center: ["50%", "54%"],
+          axisName: { color: "#9aa8bc", fontSize: 11 },
+          splitLine: { lineStyle: { color: "#1e2330" } },
+          splitArea: { show: false },
+          axisLine: { lineStyle: { color: "#2A2D3A" } },
+          indicator: [
+            { name: "Automation", max: 5 },
+            { name: "Multi-channel", max: 5 },
+            { name: "Copilot", max: 5 },
+            { name: "Integration", max: 5 },
+            { name: "Pricing", max: 5 },
+            { name: "Deploy", max: 5 }
+          ]
+        },
+        series: [{
+          type: "radar",
+          data: scores.map((item, i) => ({
+            name: item.name,
+            value: [item.automation, item.multichannel, item.copilot, item.integration, item.pricing_transparency, item.deploy_ease],
+            lineStyle: { color: palette[i], width: 1.5 },
+            itemStyle: { color: palette[i] },
+            areaStyle: { color: palette[i], opacity: 0.06 }
+          }))
+        }]
+      });
+      window.addEventListener("resize", () => chart.resize());
+    }
+
+    function initBubbleChart() {
+      if (typeof echarts === "undefined") return;
+      const container = document.getElementById("chart-bubble");
+      if (!container) return;
+      const chart = echarts.init(container);
+      const sizeMap = { "SMB/Mid": 22, "Mid/Enterprise": 36, "Enterprise": 50 };
+      chart.setOption({
+        animation: false,
+        backgroundColor: "transparent",
+        textStyle: { color: "#9aa8bc", fontFamily: "Inter, sans-serif" },
+        grid: { top: 24, right: 24, bottom: 48, left: 48 },
+        xAxis: {
+          type: "value", min: 0, max: 6, name: "定价透明度",
+          nameTextStyle: { color: "#677489", fontSize: 11 },
+          axisLine: { lineStyle: { color: "#2A2D3A" } },
+          splitLine: { lineStyle: { color: "#1e2330" } },
+          axisLabel: { color: "#677489" }
+        },
+        yAxis: {
+          type: "value", min: 0, max: 6, name: "AI 自动化深度",
+          nameTextStyle: { color: "#677489", fontSize: 11 },
+          axisLine: { show: false },
+          splitLine: { lineStyle: { color: "#1e2330" } },
+          axisLabel: { color: "#677489" }
+        },
+        series: [{
+          type: "scatter",
+          data: scores.map((item) => [item.pricing_transparency, item.automation, item.name, sizeMap[item.scale] || 30]),
+          symbolSize: (val) => val[3],
+          itemStyle: { color: "#4f8ef7", opacity: 0.75 },
+          label: {
+            show: true, position: "top", color: "#9aa8bc", fontSize: 10,
+            formatter: (params) => params.value[2]
+          }
+        }]
+      });
+      window.addEventListener("resize", () => chart.resize());
+    }
+
+    function initHeatmapChart() {
+      if (typeof echarts === "undefined") return;
+      const container = document.getElementById("chart-heatmap");
+      if (!container) return;
+      const chart = echarts.init(container);
+      const heatmapData = [];
+      featureMatrix.forEach((row, rowIndex) => {
+        row.values.forEach((value, colIndex) => {
+          heatmapData.push([colIndex, rowIndex, value]);
+        });
+      });
+      chart.setOption({
+        animation: false,
+        backgroundColor: "transparent",
+        textStyle: { color: "#9aa8bc", fontFamily: "Inter, sans-serif" },
+        grid: { top: 16, right: 16, bottom: 64, left: 130 },
+        xAxis: {
+          type: "category", data: features,
+          axisLabel: { color: "#677489", fontSize: 10, interval: 0, rotate: 28 },
+          axisLine: { lineStyle: { color: "#2A2D3A" } },
+          axisTick: { show: false }
+        },
+        yAxis: {
+          type: "category", data: featureMatrix.map((item) => item.name),
+          axisLabel: { color: "#9aa8bc", fontSize: 11 },
+          axisLine: { show: false },
+          axisTick: { show: false }
+        },
+        visualMap: {
+          min: 0, max: 2, show: false,
+          inRange: { color: ["#1a1d27", "#f59e0b", "#34d399"] }
+        },
+        series: [{
+          type: "heatmap", data: heatmapData,
+          label: {
+            show: true, fontSize: 11, color: "#0b0f16",
+            formatter: (p) => ["✗", "△", "✓"][p.value[2]]
+          }
+        }]
+      });
+      window.addEventListener("resize", () => chart.resize());
+    }
+
+    function initPositioningChart() {
+      if (typeof echarts === "undefined") return;
+      const container = document.getElementById("chart-positioning");
+      if (!container) return;
+      const chart = echarts.init(container);
+      chart.setOption({
+        animation: false,
+        backgroundColor: "transparent",
+        textStyle: { color: "#9aa8bc", fontFamily: "Inter, sans-serif" },
+        grid: { top: 24, right: 24, bottom: 48, left: 56 },
+        xAxis: {
+          type: "value", min: 1, max: 3.5,
+          name: "← SMB          Enterprise →",
+          nameLocation: "middle", nameGap: 28,
+          nameTextStyle: { color: "#677489", fontSize: 10 },
+          axisLine: { lineStyle: { color: "#2A2D3A" } },
+          splitLine: { lineStyle: { color: "#1e2330" } },
+          axisLabel: { show: false }
+        },
+        yAxis: {
+          type: "value", min: 1, max: 5.5,
+          name: "定价门槛",
+          nameTextStyle: { color: "#677489", fontSize: 11 },
+          axisLine: { show: false },
+          splitLine: { lineStyle: { color: "#1e2330" } },
+          axisLabel: { color: "#677489" }
+        },
+        series: [{
+          type: "scatter",
+          data: positioning.map((item) => [item.x, item.y, item.name]),
+          symbolSize: 14,
+          itemStyle: { color: "#34d399", opacity: 0.85 },
+          label: {
+            show: true, position: "top", color: "#9aa8bc", fontSize: 10,
+            formatter: (params) => params.value[2]
+          }
+        }]
+      });
+      window.addEventListener("resize", () => chart.resize());
+    }
+
+    function initPage() {
+      renderProductCards();
+      renderComparisonMatrix();
+      renderInsights();
+      renderRecommendations();
+      initCostChart();
+      initRadarChart();
+      initBubbleChart();
+      initHeatmapChart();
+      initPositioningChart();
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initPage);
+    } else {
+      initPage();
+    }
+  </script>
 </body>
 </html>
